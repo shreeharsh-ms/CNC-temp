@@ -8,7 +8,6 @@ FRONTEND_PATH = os.path.abspath(
 )
 
 # ---------- MAIN ROUTES ----------
-
 @main.route("/")
 def home():
     return send_from_directory(FRONTEND_PATH, "home.html")
@@ -37,7 +36,6 @@ def coming_soon():
 @main.route("/<path:filename>")
 def static_files(filename):
     return send_from_directory(FRONTEND_PATH, filename)
-
 
 # ---------- CUSTOM 404 PAGE ----------
 @main.app_errorhandler(404)
