@@ -1,5 +1,4 @@
 from flask import Flask
-import os
 
 def create_app():
     app = Flask(
@@ -8,8 +7,8 @@ def create_app():
         template_folder="../../frontend"
     )
 
-    # Register blueprints
-    from app.main import main
+    # Register blueprint using relative import
+    from .main import main
     app.register_blueprint(main)
 
     return app
