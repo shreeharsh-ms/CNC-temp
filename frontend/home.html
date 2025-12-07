@@ -3507,1357 +3507,1064 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
 		if (window.RS_MODULES.checkMinimal!==undefined) { window.RS_MODULES.checkMinimal();};
 	</script>
 
+<style>
+    :root {
+        --primary-color: #c6ac83;
+        --secondary-color: #0e1618;
+        --additional01-color: #182125;
+        --divider-color: #4e4a3d;
+        --body-color: #d1d5d7;
+        --heading-color: #ffffff;
+        --primary-color-rgb: 198,172,131;
+        --secondary-color-rgb: 14,22,24;
+        --additional01-color-rgb: 24,33,37;
+        --divider-color-rgb: 78,74,61;
+        --body-color-rgb: 209,213,215;
+        --heading-color-rgb: 255,255,255;
+        --link-color: #ffffff;
+        --link-color-hover: #c6ac83;
+        --link-color-active: #c6ac83;
+        --gold-light: #f4e4a7;
+        --gold-dark: #b8941f;
+        --success: #27ae60;
+        --platinum: #e5e4e2;
+        --diamond: #b9f2ff;
+    }
 
-    <style>
-        :root {
-            --primary-color: #c6ac83;
-            --secondary-color: #0e1618;
-            --additional01-color: #182125;
-            --divider-color: #4e4a3d;
-            --body-color: #d1d5d7;
-            --heading-color: #ffffff;
-            --primary-color-rgb: 198,172,131;
-            --secondary-color-rgb: 14,22,24;
-            --additional01-color-rgb: 24,33,37;
-            --divider-color-rgb: 78,74,61;
-            --body-color-rgb: 209,213,215;
-            --heading-color-rgb: 255,255,255;
-            --link-color: #ffffff;
-            --link-color-hover: #c6ac83;
-            --link-color-active: #c6ac83;
-            --gold-light: #f4e4a7;
-            --gold-dark: #b8941f;
-            --success: #27ae60;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.66666666667;
+        letter-spacing: 0px;
+        background-color: var(--secondary-color);
+        color: var(--body-color);
+        min-height: 100vh;
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
+    }
 
-        body {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 15px;
-            font-weight: 400;
-            line-height: 1.66666666667;
-            letter-spacing: 0px;
-            background-color: var(--secondary-color);
-            color: var(--body-color);
-            min-height: 100vh;
-            padding: 20px;
-            position: relative;
-            overflow-x: hidden;
-        }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Cormorant Infant', serif;
+        font-weight: 700;
+        line-height: 1.18;
+        letter-spacing: 0em;
+        color: var(--heading-color);
+    }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Cormorant Infant', serif;
-            font-weight: 700;
-            line-height: 1.18;
-            letter-spacing: 0em;
-            text-transform: none;
-            color: var(--heading-color);
-        }
+    /* Luxury Background */
+    .luxury-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 80%, rgba(198, 172, 131, 0.08) 0%, transparent 40%),
+            radial-gradient(circle at 80% 20%, rgba(229, 228, 226, 0.05) 0%, transparent 40%),
+            linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        z-index: -2;
+    }
 
-        h1 {
-            font-size: 50px;
-        }
+    .diamond-sparkle {
+        position: fixed;
+        width: 1px;
+        height: 1px;
+        background: var(--diamond);
+        box-shadow: 0 0 10px 2px var(--diamond);
+        border-radius: 50%;
+        animation: sparkle 3s infinite;
+        z-index: -1;
+    }
 
-        h2 {
-            font-size: 40px;
-        }
+    @keyframes sparkle {
+        0%, 100% { opacity: 0; }
+        50% { opacity: 1; }
+    }
 
-        h3 {
-            font-size: 30px;
-        }
+    /* Luxury Modal */
+    .luxury-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
 
-        h4 {
-            font-size: 25px;
-        }
+    .modal-backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+    }
 
-        h5 {
-            font-size: 22px;
-        }
+    .modal-container {
+        width: 100%;
+        max-width: 1100px;
+        background: var(--additional01-color);
+        border: 1px solid rgba(198, 172, 131, 0.3);
+        box-shadow: 
+            0 25px 50px rgba(0, 0, 0, 0.8),
+            0 0 0 1px rgba(229, 228, 226, 0.1),
+            0 0 30px rgba(198, 172, 131, 0.2);
+        position: relative;
+        z-index: 10000;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        height: 650px;
+        max-height: 85vh;
+        overflow: hidden;
+        transform: translateY(30px);
+        opacity: 0;
+        animation: modalEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
 
-        h6 {
-            font-size: 16px;
-        }
-
-        /* Animated Background Elements */
-        .bg-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .bg-element {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
-            opacity: 0.03;
-            animation: float 20s infinite linear;
-        }
-
-        .bg-element:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-
-        .bg-element:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            top: 60%;
-            right: 10%;
-            animation-delay: -5s;
-        }
-
-        .bg-element:nth-child(3) {
-            width: 150px;
-            height: 150px;
-            bottom: 20%;
-            left: 20%;
-            animation-delay: -10s;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-            100% { transform: translateY(0px) rotate(360deg); }
-        }
-
-        /* Fixed Modal Styles */
-        .auth-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .auth-modal.active {
-            display: flex;
-        }
-
-        .modal-backdrop {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .auth-container {
-            width: 100%;
-            max-width: 1200px;
-            background: var(--additional01-color);
-            border-radius: 0;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-            overflow: hidden;
-            border: 1px solid var(--divider-color);
-            position: relative;
-            z-index: 10000;
+    @keyframes modalEntrance {
+        to {
             transform: translateY(0);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 700px;
+            opacity: 1;
+        }
+    }
+
+    /* Premium Carousel */
+    .premium-carousel {
+        position: relative;
+        overflow: hidden;
+        background: #000;
+    }
+
+    .carousel-track {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .carousel-slide {
+        min-width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .carousel-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.6);
+        transition: filter 0.5s ease;
+    }
+
+    .slide-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: flex-end;
+        padding: 40px;
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 50%);
+    }
+
+    .slide-content {
+        width: 100%;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.7s ease;
+    }
+
+    .carousel-slide.active .slide-content {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .slide-tag {
+        display: inline-block;
+        background: linear-gradient(45deg, var(--primary-color), var(--gold-light));
+        color: var(--secondary-color);
+        padding: 6px 20px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        border-left: 3px solid var(--gold-dark);
+    }
+
+    .slide-title {
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        color: var(--heading-color);
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .slide-highlight {
+        color: var(--primary-color);
+        position: relative;
+        display: inline-block;
+    }
+
+    .slide-highlight::after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary-color), transparent);
+    }
+
+    .slide-description {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.5;
+        margin-bottom: 20px;
+        max-width: 500px;
+    }
+
+    .slide-features {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .feature-badge {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 8px 16px;
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .feature-badge:hover {
+        background: rgba(198, 172, 131, 0.15);
+        border-color: var(--primary-color);
+    }
+
+    .feature-badge i {
+        color: var(--primary-color);
+        font-size: 14px;
+    }
+
+    .feature-badge span {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--heading-color);
+    }
+
+    .slide-number {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        font-size: 72px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.03);
+        line-height: 1;
+        font-family: 'Cormorant Infant', serif;
+    }
+
+    .carousel-nav {
+        position: absolute;
+        top: 25px;
+        left: 40px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: var(--heading-color);
+        font-size: 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .carousel-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .carousel-btn:hover::before {
+        left: 100%;
+    }
+
+    .carousel-btn:hover {
+        background: var(--primary-color);
+        color: var(--secondary-color);
+        transform: scale(1.05);
+    }
+
+    .carousel-dots {
+        display: flex;
+        gap: 8px;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .carousel-dot::before {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        right: -4px;
+        bottom: -4px;
+        border-radius: 50%;
+        background: transparent;
+        transition: all 0.3s ease;
+    }
+
+    .carousel-dot.active {
+        background: var(--primary-color);
+        transform: scale(1.2);
+    }
+
+    .carousel-dot.active::before {
+        background: rgba(198, 172, 131, 0.2);
+    }
+
+    /* Premium Info Side */
+    .premium-info {
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(135deg, var(--additional01-color) 0%, #0f1719 100%);
+        position: relative;
+        overflow: scroll;
+    }
+
+    .premium-info::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    }
+
+    .premium-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .premium-header h1 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        background: linear-gradient(45deg, var(--platinum), var(--gold-light));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 0.5px;
+    }
+
+    .premium-subtitle {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 15px;
+    }
+
+    .exclusive-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(45deg, var(--primary-color), var(--gold-light));
+        color: var(--secondary-color);
+        padding: 8px 20px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .exclusive-badge::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+
+    /* Premium Countdown */
+    .premium-countdown {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 25px;
+        margin-bottom: 25px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .countdown-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .countdown-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--heading-color);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .countdown-title i {
+        color: var(--primary-color);
+    }
+
+    .countdown-date {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .timer-display {
+        display: flex;
+        gap: 15px;
+    }
+
+    .timer-unit {
+        text-align: center;
+        flex: 1;
+    }
+
+    .timer-value {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary-color);
+        line-height: 1;
+        margin-bottom: 5px;
+        font-variant-numeric: tabular-nums;
+        font-family: 'DM Sans', sans-serif;
+        position: relative;
+    }
+
+    .timer-value::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, var(--primary-color), transparent);
+        opacity: 0.3;
+    }
+
+    .timer-label {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Limited Counter */
+    .limited-counter {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 25px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .counter-title {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .counter-title i {
+        color: var(--primary-color);
+    }
+
+    .counter-display {
+        font-size: 36px;
+        font-weight: 300;
+        color: var(--primary-color);
+        line-height: 1;
+        margin-bottom: 15px;
+        font-family: 'DM Sans', sans-serif;
+    }
+
+    .counter-subtitle {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 0.5px;
+    }
+
+    .counter-progress {
+        height: 3px;
+        background: rgba(255, 255, 255, 0.08);
+        margin: 20px 0;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary-color), var(--gold-light));
+        width: 24%;
+        position: relative;
+        transition: width 0.5s ease;
+    }
+
+    .progress-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        animation: shimmer 2s infinite linear;
+    }
+
+    /* Notify Form */
+    .notify-form {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 25px;
+        margin-bottom: 25px;
+    }
+
+    .form-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--heading-color);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .form-title i {
+        color: var(--primary-color);
+    }
+
+    .form-description {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 14px 18px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 14px;
+        color: var(--heading-color);
+        transition: all 0.3s ease;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 0 0 2px rgba(198, 172, 131, 0.1);
+    }
+
+    .form-input::placeholder {
+        color: rgba(209, 213, 215, 0.5);
+    }
+
+    .btn {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .btn:hover::before {
+        left: 100%;
+    }
+
+    .btn-primary {
+        background: linear-gradient(45deg, var(--primary-color), var(--gold-light));
+        color: var(--secondary-color);
+        margin-bottom: 10px;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(198, 172, 131, 0.3);
+    }
+
+    .btn-secondary {
+        background: transparent;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+    }
+
+    .btn-secondary:hover {
+        background: rgba(198, 172, 131, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .form-note {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .form-note i {
+        color: var(--success);
+    }
+
+    /* Success Message */
+    .success-message {
+        background: rgba(39, 174, 96, 0.1);
+        border: 1px solid var(--success);
+        color: #2ecc71;
+        padding: 15px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        display: none;
+    }
+
+    .success-message i {
+        color: var(--success);
+        font-size: 18px;
+    }
+
+    /* Terms Section */
+    .terms-section {
+        margin-top: auto;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .terms-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--heading-color);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .terms-title i {
+        color: var(--primary-color);
+        font-size: 14px;
+    }
+
+    .terms-content {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.4);
+        line-height: 1.4;
+    }
+
+    /* Close Button */
+    .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        background: rgba(14, 22, 24, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(198, 172, 131, 0.3);
+        color: var(--heading-color);
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10001;
+        transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+        background: var(--primary-color);
+        color: var(--secondary-color);
+        transform: rotate(90deg);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+        .modal-container {
+            grid-template-columns: 1fr;
+            max-width: 500px;
+            height: auto;
             max-height: 90vh;
-            overflow-y: auto;
         }
-
-        .auth-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+        
+        .premium-carousel {
+            height: 350px;
         }
-
-        /* Left Side - Carousel (Desktop) */
-        .auth-carousel {
-            background: linear-gradient(135deg, var(--additional01-color) 0%, var(--secondary-color) 100%);
-            position: relative;
-            overflow: hidden;
-            border-right: 1px solid var(--divider-color);
-            display: block;
+        
+        .slide-overlay {
+            padding: 30px;
         }
-
-        .carousel-slides {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .carousel-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease;
-            padding: 50px 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .carousel-slide.active {
-            opacity: 1;
-        }
-
-        .slide-content {
-            max-width: 400px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .slide-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--primary-color);
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            font-size: 36px;
-            color: var(--secondary-color);
-            box-shadow: 0 10px 30px rgba(198, 172, 131, 0.3);
-        }
-
+        
         .slide-title {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--primary-color), var(--gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .slide-description {
-            font-size: 16px;
-            color: var(--body-color);
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .slide-features {
-            text-align: left;
-            margin-bottom: 30px;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-            font-size: 15px;
-        }
-
-        .feature-item i {
-            color: var(--primary-color);
-            font-size: 18px;
-        }
-
-        .carousel-indicators {
-            position: absolute;
-            bottom: 30px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--divider-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .indicator.active {
-            background: var(--primary-color);
-            transform: scale(1.2);
-        }
-
-        .cafe-info {
-            position: absolute;
-            top: 30px;
-            left: 40px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .cafe-logo {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: var(--secondary-color);
-            box-shadow: 0 5px 15px rgba(198, 172, 131, 0.3);
-        }
-
-        .cafe-details h2 {
-            font-size: 24px;
-            font-weight: 700;
-            background: linear-gradient(45deg, var(--primary-color), var(--gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
-        }
-
-        .cafe-details p {
-            font-size: 14px;
-            color: var(--body-color);
-        }
-
-        /* Mobile Offers Carousel */
-        .mobile-offers {
-            display: none;
-            background: linear-gradient(135deg, var(--additional01-color) 0%, var(--secondary-color) 100%);
-            border-bottom: 1px solid var(--divider-color);
-            position: relative;
-            height: 450px;
-            overflow: hidden;
-        }
-
-        .mobile-offers-slides {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .mobile-offer-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease;
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .mobile-offer-slide.active {
-            opacity: 1;
-        }
-
-        .mobile-offer-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--primary-color);
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
             font-size: 28px;
-            color: var(--secondary-color);
-            box-shadow: 0 8px 20px rgba(198, 172, 131, 0.3);
         }
+        
+        .premium-info {
+            padding: 30px;
+        }
+    }
 
-        .mobile-offer-title {
+    @media (max-width: 576px) {
+        .luxury-modal {
+            padding: 10px;
+        }
+        
+        .modal-container {
+            max-height: 95vh;
+        }
+        
+        .premium-carousel {
+            height: 300px;
+        }
+        
+        .slide-overlay {
+            padding: 25px;
+        }
+        
+        .slide-title {
             font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, var(--primary-color), var(--gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
-
-        .mobile-offer-description {
-            font-size: 15px;
-            color: var(--body-color);
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        .mobile-offer-features {
-            text-align: center;
-        }
-
-        .mobile-feature-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin: 0 10px 10px 0;
-            font-size: 14px;
-            background: rgba(198, 172, 131, 0.1);
-            padding: 6px 12px;
-            border-radius: 0;
-        }
-
-        .mobile-feature-item i {
-            color: var(--primary-color);
+        
+        .slide-description {
             font-size: 14px;
         }
-
-        .mobile-indicators {
-            position: absolute;
-            bottom: 15px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
+        
+        .carousel-nav {
+            left: 25px;
+            bottom: 20px;
         }
-
-        .mobile-indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--divider-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
+        
+        .premium-info {
+            padding: 25px;
         }
-
-        .mobile-indicator.active {
-            background: var(--primary-color);
-            transform: scale(1.2);
+        
+        .timer-value {
+            font-size: 24px;
         }
-
-        /* Right Side - Auth Form */
-        .auth-form-side {
-            padding: 50px 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .auth-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .auth-header h1 {
+        
+        .counter-display {
             font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--heading-color);
         }
+    }
+</style>
 
-        .auth-header p {
-            font-size: 16px;
-            color: var(--body-color);
-            line-height: 1.5;
+<div class="luxury-bg"></div>
+
+<!-- Diamond Sparkles -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        for (let i = 0; i < 20; i++) {
+            createSparkle();
         }
-
-        .premium-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(45deg, var(--primary-color), var(--gold-light));
-            color: var(--secondary-color);
-            padding: 8px 16px;
-            border-radius: 0;
-            font-size: 14px;
-            font-weight: 600;
-            margin-top: 15px;
-            box-shadow: 0 4px 12px rgba(198, 172, 131, 0.3);
-        }
-
-        .auth-tabs {
-            display: flex;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--divider-color);
-            position: relative;
-        }
-
-        .auth-tab {
-            flex: 1;
-            text-align: center;
-            padding: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            color: var(--body-color);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .auth-tab::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 3px;
-            background: var(--primary-color);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .auth-tab.active {
-            color: var(--primary-color);
-        }
-
-        .auth-tab.active::before {
-            width: 80%;
-        }
-
-        .auth-form {
-            display: none;
-            animation: slideIn 0.5s ease;
-        }
-
-        .auth-form.active {
-            display: block;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 500;
-            color: var(--heading-color);
-            font-size: 14px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 16px 20px;
-            border: 1px solid var(--divider-color);
-            border-radius: 0;
-            background: var(--secondary-color);
-            font-size: 15px;
-            transition: all 0.3s ease;
-            color: var(--body-color);
-            backdrop-filter: blur(10px);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(198, 172, 131, 0.2);
-            background: var(--secondary-color);
-        }
-
-        .form-control::placeholder {
-            color: var(--body-color);
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 0;
-            font-weight: 600;
-            font-size: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, var(--primary-color), var(--gold-light));
-            color: var(--secondary-color);
-            box-shadow: 0 5px 15px rgba(198, 172, 131, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(198, 172, 131, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--body-color);
-            border: 1px solid var(--divider-color);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--heading-color);
-        }
-
-        .otp-container {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .otp-inputs {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 25px;
-            justify-content: center;
-        }
-
-        .otp-input {
-            width: 55px;
-            height: 55px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: 600;
-            border: 1px solid var(--divider-color);
-            border-radius: 0;
-            background: var(--secondary-color);
-            transition: all 0.3s ease;
-            color: var(--body-color);
-        }
-
-        .otp-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(198, 172, 131, 0.2);
-            background: var(--secondary-color);
-        }
-
-        .resend-otp {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: var(--body-color);
-        }
-
-        .resend-otp a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .resend-otp a:hover {
-            color: var(--gold-light);
-        }
-
-        .guest-option {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 1px solid var(--divider-color);
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
-        }
-
-        .guest-option:hover {
-            opacity: 1;
-        }
-
-        .guest-option p {
-            margin-bottom: 15px;
-            font-size: 14px;
-            color: var(--body-color);
-        }
-
-        .divider {
-            display: flex;
-            align-items: center;
-            margin: 30px 0;
-            color: var(--body-color);
-            font-size: 14px;
-        }
-
-        .divider::before,
-        .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--divider-color);
-        }
-
-        .divider span {
-            padding: 0 20px;
-        }
-
-        .form-footer {
-            text-align: center;
-            margin-top: 25px;
-            font-size: 14px;
-            color: var(--body-color);
-        }
-
-        .form-footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .form-footer a:hover {
-            color: var(--gold-light);
-        }
-
-        .back-to-login {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .back-to-login a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.3s ease;
-        }
-
-        .back-to-login a:hover {
-            color: var(--gold-light);
-        }
-
-        .success-message {
-            background: rgba(39, 174, 96, 0.1);
-            border: 1px solid var(--success);
-            color: #2ecc71;
-            padding: 15px 20px;
-            border-radius: 0;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            display: none;
-            animation: slideIn 0.5s ease;
-        }
-
-        .success-message i {
-            color: var(--success);
-            font-size: 18px;
-        }
-
-        .discount-banner {
-            background: linear-gradient(45deg, rgba(198, 172, 131, 0.1), rgba(244, 228, 167, 0.05));
-            border: 1px solid rgba(198, 172, 131, 0.3);
-            padding: 20px;
-            border-radius: 0;
-            margin-bottom: 25px;
-            text-align: center;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(198, 172, 131, 0.2); }
-            70% { box-shadow: 0 0 0 10px rgba(198, 172, 131, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(198, 172, 131, 0); }
-        }
-
-        .discount-banner i {
-            color: var(--primary-color);
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .discount-banner h3 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-            font-size: 18px;
-        }
-
-        .discount-banner p {
-            color: var(--body-color);
-            font-size: 14px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Close Button */
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--secondary-color);
-            border: 1px solid var(--divider-color);
-            color: var(--body-color);
-            font-size: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10001;
-            transition: all 0.3s ease;
-        }
-
-        .modal-close:hover {
-            background: var(--primary-color);
-            color: var(--secondary-color);
-        }
-
-        /* Mobile Responsive Styles */
-        @media (max-width: 968px) {
-            .auth-container {
-                grid-template-columns: 1fr;
-                max-width: 500px;
-                min-height: auto;
-            }
+        
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'diamond-sparkle';
             
-            .auth-carousel {
-                display: none;
-            }
+            // Random position
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
             
-            .mobile-offers {
-                display: block;
-            }
+            // Random size
+            const size = 1 + Math.random() * 2;
+            sparkle.style.width = size + 'px';
+            sparkle.style.height = size + 'px';
             
-            .auth-form-side {
-                padding: 30px 25px;
-            }
+            // Random animation delay
+            sparkle.style.animationDelay = Math.random() * 3 + 's';
             
-            .cafe-info {
-                top: 20px;
-                left: 20px;
-            }
+            document.body.appendChild(sparkle);
         }
+    });
+</script>
 
-        @media (max-width: 480px) {
-            .auth-modal {
-                padding: 10px;
-            }
-            
-            .auth-container {
-                border-radius: 0;
-                max-height: 95vh;
-            }
-            
-            .auth-form-side {
-                padding: 25px 20px;
-            }
-            
-            .otp-input {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .mobile-offers {
-                height: 400px;
-            }
-            
-            .mobile-offer-slide {
-                padding: 25px 20px;
-            }
-            
-            .mobile-offer-title {
-                font-size: 22px;
-            }
-            
-            .mobile-offer-description {
-                font-size: 15px;
-            }
-        }
-
-        /* Psychology: Make guest option less visible */
-        .guest-option {
-            filter: grayscale(0.7);
-            transition: all 0.3s ease;
-        }
-
-        .guest-option:hover {
-            filter: grayscale(0);
-        }
-
-        .btn-secondary {
-            opacity: 0.7;
-        }
-
-        .btn-secondary:hover {
-            opacity: 1;
-        }
-        .activation-container{
-            display: none;
-        }
-        body{
-            overflow: hidden !important;
-            padding: 0 !important;
-        }
-    </style>
-    <div class="bg-elements">
-        <div class="bg-element"></div>
-        <div class="bg-element"></div>
-        <div class="bg-element"></div>
-    </div>
-
-    <!-- Auth Modal -->
-<div class="auth-modal" id="authModal">
+<!-- Luxury Modal -->
+<div class="luxury-modal" id="luxuryModal">
     <div class="modal-backdrop"></div>
-    <button class="modal-close" id="closeModal">
-        <i class="fas fa-times"></i>
-    </button>
-    <div class="auth-container">
-        <!-- Mobile Offers Carousel (Visible on mobile) -->
-        <div class="mobile-offers">
-            <div class="cafe-info">
-                <div class="cafe-logo">
-                    <i class="fas fa-coffee"></i>
-                </div>
-                <div class="cafe-details">
-                    <h2>EPICUREAN CAFE</h2>
-                    <p>+91 98765 43210</p>
-                </div>
-            </div>
-
-            <div class="mobile-offers-slides">
-                <!-- Slide 1: Welcome Discount -->
-                <div class="mobile-offer-slide active">
-                    <div class="mobile-offer-icon">
-                        <i class="fas fa-gift"></i>
-                    </div>
-                    <h3 class="mobile-offer-title">Instant 5% Welcome Discount</h3>
-                    <p class="mobile-offer-description">Join our premium membership and get immediate savings</p>
-                    <div class="mobile-offer-features">
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Instant activation</span>
-                        </div>
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>All menu items</span>
-                        </div>
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>No minimum order</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 2: Exclusive Deals -->
-                <div class="mobile-offer-slide">
-                    <div class="mobile-offer-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3 class="mobile-offer-title">Exclusive Member Deals</h3>
-                    <p class="mobile-offer-description">Special offers available only to our members</p>
-                    <div class="mobile-offer-features">
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Weekly specials</span>
-                        </div>
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Early access</span>
-                        </div>
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Seasonal promotions</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3: Loyalty Points -->
-                <div class="mobile-offer-slide">
-                    <div class="mobile-offer-icon">
-                        <i class="fas fa-medal"></i>
-                    </div>
-                    <h3 class="mobile-offer-title">Loyalty Rewards</h3>
-                    <p class="mobile-offer-description">Earn points and redeem for free items</p>
-                    <div class="mobile-offer-features">
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>1 point per ₹100</span>
-                        </div>
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Free coffee & snacks</span>
-                        </div>
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Birthday rewards</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 4: Referral Program -->
-                <div class="mobile-offer-slide">
-                    <div class="mobile-offer-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="mobile-offer-title">Refer & Earn</h3>
-                    <p class="mobile-offer-description">Share with friends and get rewarded</p>
-                    <div class="mobile-offer-features">
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>₹200 credit</span>
-                        </div>
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>No limit</span>
-                        </div>
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Instant credit</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 5: Priority Service -->
-                <div class="mobile-offer-slide">
-                    <div class="mobile-offer-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3 class="mobile-offer-title">Priority Service</h3>
-                    <p class="mobile-offer-description">Faster service and exclusive privileges</p>
-                    <div class="mobile-offer-features">
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Priority processing</span>
-                        </div>
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Member-only seating</span>
-                        </div>
-                        <div class="mobile-feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Reservation priority</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mobile-indicators">
-                <div class="mobile-indicator active" data-slide="0"></div>
-                <div class="mobile-indicator" data-slide="1"></div>
-                <div class="mobile-indicator" data-slide="2"></div>
-                <div class="mobile-indicator" data-slide="3"></div>
-                <div class="mobile-indicator" data-slide="4"></div>
-            </div>
-        </div>
-
-        <!-- Left Side - Carousel (Desktop) -->
-        <div class="auth-carousel">
-            <div class="cafe-info">
-                <div class="cafe-logo">
-                    <i class="fas fa-coffee"></i>
-                </div>
-                <div class="cafe-details">
-                    <h2>EPICUREAN CAFE</h2>
-                    <p>+91 98765 43210</p>
-                </div>
-            </div>
-
-            <div class="carousel-slides">
-                <!-- Slide 1: Welcome Discount -->
+    
+    <div class="modal-container">
+        <!-- Premium Carousel -->
+        <div class="premium-carousel">
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Slide 1: Early Bird Offer -->
                 <div class="carousel-slide active">
-                    <div class="slide-content">
-                        <div class="slide-icon">
-                            <i class="fas fa-gift"></i>
-                        </div>
-                        <h2 class="slide-title">Instant 5% Welcome Discount</h2>
-                        <p class="slide-description">Join our premium membership and get immediate savings on your first order</p>
-                        <div class="slide-features">
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Instant activation upon signup</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Applicable on all menu items</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>No minimum order value</span>
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Fine Dining">
+                    <div class="slide-overlay">
+                        <div class="slide-content">
+                            <div class="slide-tag">LAUNCH EXCLUSIVE</div>
+                            <h2 class="slide-title">Early Bird <span class="slide-highlight">20% OFF</span></h2>
+                            <p class="slide-description">First 200 customers receive exclusive discount on all main courses. Limited availability.</p>
+                            <div class="slide-features">
+                                <div class="feature-badge">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Premium Access</span>
+                                </div>
+                                <div class="feature-badge">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>Jan 1, 2026</span>
+                                </div>
+                                <div class="feature-badge">
+                                    <i class="fas fa-user-friends"></i>
+                                    <span>200 Only</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="slide-number">01</div>
                 </div>
 
-                <!-- Slide 2: Exclusive Deals -->
+                <!-- Slide 2: Referral Program -->
                 <div class="carousel-slide">
-                    <div class="slide-content">
-                        <div class="slide-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h2 class="slide-title">Exclusive Member Deals</h2>
-                        <p class="slide-description">Access special offers and promotions available only to our members</p>
-                        <div class="slide-features">
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Weekly member-only specials</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Early access to new menu items</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Seasonal promotions and bundles</span>
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Restaurant Interior">
+                    <div class="slide-overlay">
+                        <div class="slide-content">
+                            <div class="slide-tag">REFERRAL BONUS</div>
+                            <h2 class="slide-title">Earn <span class="slide-highlight">₹500 Each</span></h2>
+                            <p class="slide-description">Refer friends and earn ₹500 for each successful referral. Unlimited potential earnings.</p>
+                            <div class="slide-features">
+                                <div class="feature-badge">
+                                    <i class="fas fa-rupee-sign"></i>
+                                    <span>₹500 Credit</span>
+                                </div>
+                                <div class="feature-badge">
+                                    <i class="fas fa-infinity"></i>
+                                    <span>No Limits</span>
+                                </div>
+                                <div class="feature-badge">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>Instant</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="slide-number">02</div>
                 </div>
 
-                <!-- Slide 3: Loyalty Points -->
+                <!-- Slide 3: Priority Access -->
                 <div class="carousel-slide">
-                    <div class="slide-content">
-                        <div class="slide-icon">
-                            <i class="fas fa-medal"></i>
-                        </div>
-                        <h2 class="slide-title">Loyalty Rewards Program</h2>
-                        <p class="slide-description">Earn points with every purchase and redeem for free items and upgrades</p>
-                        <div class="slide-features">
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>1 point for every ₹100 spent</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Redeem points for free coffee & snacks</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Birthday surprise rewards</span>
+                    <img src="https://images.unsplash.com/photo-1554679665-f5537f187268?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Priority Booking">
+                    <div class="slide-overlay">
+                        <div class="slide-content">
+                            <div class="slide-tag">VIP PRIVILEGES</div>
+                            <h2 class="slide-title">Priority <span class="slide-highlight">Access</span></h2>
+                            <p class="slide-description">Reserve prime tables before public booking. Exclusive member-only seating areas.</p>
+                            <div class="slide-features">
+                                <div class="feature-badge">
+                                    <i class="fas fa-clock"></i>
+                                    <span>24/7 Priority</span>
+                                </div>
+                                <div class="feature-badge">
+                                    <i class="fas fa-chair"></i>
+                                    <span>Best Seats</span>
+                                </div>
+                                <div class="feature-badge">
+                                    <i class="fas fa-star"></i>
+                                    <span>VIP Service</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="slide-number">03</div>
                 </div>
 
-                <!-- Slide 4: Referral Program -->
+                <!-- Slide 4: Exclusive Preview -->
                 <div class="carousel-slide">
-                    <div class="slide-content">
-                        <div class="slide-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h2 class="slide-title">Refer & Earn Benefits</h2>
-                        <p class="slide-description">Share the Epicurean experience with friends and get rewarded</p>
-                        <div class="slide-features">
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>₹200 credit for you and your friend</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>No limit on referrals</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Instant credit upon their first order</span>
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Gourmet Food">
+                    <div class="slide-overlay">
+                        <div class="slide-content">
+                            <div class="slide-tag">EXCLUSIVE ACCESS</div>
+                            <h2 class="slide-title">Menu <span class="slide-highlight">Preview</span></h2>
+                            <p class="slide-description">First taste of new creations before public release. Influence our culinary direction.</p>
+                            <div class="slide-features">
+                                <div class="feature-badge">
+                                    <i class="fas fa-eye"></i>
+                                    <span>First Look</span>
+                                </div>
+                                <div class="feature-badge">
+                                    <i class="fas fa-comment"></i>
+                                    <span>Feedback</span>
+                                </div>
+                                <div class="feature-badge">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>Influence</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Slide 5: Priority Service -->
-                <div class="carousel-slide">
-                    <div class="slide-content">
-                        <div class="slide-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <h2 class="slide-title">Priority Service</h2>
-                        <p class="slide-description">Enjoy faster service and exclusive member privileges</p>
-                        <div class="slide-features">
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Priority order processing</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Exclusive member-only seating</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Reservation priority during peak hours</span>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="slide-number">04</div>
                 </div>
             </div>
 
-            <div class="carousel-indicators">
-                <div class="indicator active" data-slide="0"></div>
-                <div class="indicator" data-slide="1"></div>
-                <div class="indicator" data-slide="2"></div>
-                <div class="indicator" data-slide="3"></div>
-                <div class="indicator" data-slide="4"></div>
+            <div class="carousel-nav">
+                <button class="carousel-btn prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-dots">
+                    <div class="carousel-dot active" data-slide="0"></div>
+                    <div class="carousel-dot" data-slide="1"></div>
+                    <div class="carousel-dot" data-slide="2"></div>
+                    <div class="carousel-dot" data-slide="3"></div>
+                </div>
+                <button class="carousel-btn next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
 
-        <!-- Right Side - Auth Form -->
-        <div class="auth-form-side">
-            <div class="auth-header">
-                <h1>Welcome to Epicurean</h1>
-                <p>Join our premium cafe community and unlock exclusive benefits</p>
-                <div class="premium-badge">
-                    <i class="fas fa-crown"></i>
-                    PREMIUM MEMBERSHIP
+        <!-- Premium Info -->
+        <div class="premium-info">
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="premium-header">
+                <h1>PREMIUM LAUNCH OFFERS</h1>
+                <p class="premium-subtitle">Exclusive privileges for our founding members</p>
+                <div class="exclusive-badge">
+                    <i class="fas fa-gem"></i>
+                    FOUNDING MEMBER ACCESS
                 </div>
             </div>
-            
-            <div class="auth-tabs">
-                <div class="auth-tab" data-tab="login">Member Login</div>
-                <div class="auth-tab active" data-tab="signup">Become Member</div>
-            </div>
-            
-            <!-- Login Form -->
-            <div class="auth-form" id="login-form">
-                <div class="form-group">
-                    <label for="login-phone">Phone Number</label>
-                    <input type="tel" id="login-phone" class="form-control" placeholder="Enter your registered number">
-                </div>
+
+            <!-- Premium Countdown -->
+
+            <!-- Notify Form -->
+            <div class="notify-form">
+                <h3 class="form-title">
+                    <i class="fas fa-bell"></i>
+                    GET EARLY ACCESS
+                </h3>
+                <p class="form-description">Secure your spot. We'll notify you when registration opens.</p>
                 
-                <button class="btn btn-primary" id="send-otp-btn">
-                    <i class="fas fa-lock"></i> Secure Login
-                </button>
-                
-                <div class="otp-container" id="login-otp-container">
-                    <div class="back-to-login">
-                        <a href="#" id="back-to-login-phone">
-                            <i class="fas fa-arrow-left"></i> Change number
-                        </a>
-                    </div>
-                    
-                    <div class="success-message" id="otp-sent-message">
-                        <i class="fas fa-shield-check"></i>
-                        <span>Secure code sent to your device</span>
+                <form id="notifyForm">
+                    <div class="form-group">
+                        <input type="email" class="form-input" placeholder="Your email address" required>
                     </div>
                     
                     <div class="form-group">
-                        <label>Enter Verification Code</label>
-                        <div class="otp-inputs">
-                            <input type="text" class="otp-input" maxlength="1" data-index="1">
-                            <input type="text" class="otp-input" maxlength="1" data-index="2">
-                            <input type="text" class="otp-input" maxlength="1" data-index="3">
-                            <input type="text" class="otp-input" maxlength="1" data-index="4">
-                        </div>
+                        <input type="text" class="form-input" placeholder="Your name (optional)">
                     </div>
                     
-                    <button class="btn btn-primary" id="verify-otp-btn">
-                        <i class="fas fa-check-circle"></i> Verify & Access
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> NOTIFY ME
                     </button>
                     
-                    <div class="resend-otp">
-                        Code not received? <a href="#" id="resend-otp">Resend secure code</a>
-                    </div>
-                </div>
-                
-                <div class="divider">
-                    <span>Limited Access</span>
-                </div>
-                
-                <div class="guest-option">
-                    <p>Continue without membership benefits</p>
-                    <button class="btn btn-secondary" id="guest-login-btn">
-                        <i class="fas fa-user-clock"></i> Basic Access
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='/coming-soon'">
+                        <i class="fas fa-info-circle"></i> LEARN MORE
                     </button>
-                </div>
+                    
+                    <div class="form-note">
+                        <i class="fas fa-shield-alt"></i>
+                        Your information is protected & confidential
+                    </div>
+                </form>
             </div>
-            
-            <!-- Sign Up Form -->
-            <div class="auth-form active" id="signup-form">
-                <div class="discount-banner">
-                    <i class="fas fa-gift"></i>
-                    <h3>Instant 5% Welcome Discount</h3>
-                    <p>Create your account and enjoy immediate savings on your first premium order</p>
+
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                <span>You're on the list! We'll notify you when offers begin.</span>
+            </div>
+
+            <!-- Terms -->
+            <div class="terms-section">
+                <div class="terms-title">
+                    <i class="fas fa-file-contract"></i>
+                    TERMS & CONDITIONS
                 </div>
-                
-                <div class="form-group">
-                    <label for="signup-name">Full Name</label>
-                    <input type="text" id="signup-name" class="form-control" placeholder="Enter your full name">
-                </div>
-                
-                <div class="form-group">
-                    <label for="signup-phone">Phone Number</label>
-                    <input type="tel" id="signup-phone" class="form-control" placeholder="Enter your phone number">
-                </div>
-                
-                <div class="form-group">
-                    <label for="signup-dob">Date of Birth</label>
-                    <input type="date" id="signup-dob" class="form-control">
-                </div>
-                
-                <button class="btn btn-primary" id="signup-send-otp-btn">
-                    <i class="fas fa-paper-plane"></i> Send OTP
-                </button>
-                
-                <div class="otp-container" id="signup-otp-container">
-                    <div class="back-to-login">
-                        <a href="#" id="back-to-signup-details">
-                            <i class="fas fa-arrow-left"></i> Edit details
-                        </a>
-                    </div>
-                    
-                    <div class="success-message" id="signup-otp-sent-message">
-                        <i class="fas fa-shield-check"></i>
-                        <span>Verification code sent successfully</span>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Enter Verification Code</label>
-                        <div class="otp-inputs">
-                            <input type="text" class="otp-input" maxlength="1" data-index="1">
-                            <input type="text" class="otp-input" maxlength="1" data-index="2">
-                            <input type="text" class="otp-input" maxlength="1" data-index="3">
-                            <input type="text" class="otp-input" maxlength="1" data-index="4">
-                        </div>
-                    </div>
-                    
-                    <button class="btn btn-primary" id="signup-verify-otp-btn">
-                        <i class="fas fa-check-circle"></i> Verify OTP
-                    </button>
-                    
-                    <div class="resend-otp">
-                        Didn't receive code? <a href="#" id="signup-resend-otp">Resend code</a>
-                    </div>
-                </div>
-                
-                <!-- Activation section (shown after OTP verification) -->
-                <div class="activation-container" id="signup-activation-container">
-                    <div class="success-message">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Phone verified successfully!</span>
-                    </div>
-                    
-                    
-                    <button class="btn btn-primary" id="activate-membership-btn">
-                        <i class="fas fa-crown"></i> Activate Membership
-                    </button>
-                </div>
-                
-                <div class="form-footer">
-                    Already a member? <a href="#" class="switch-to-login">Access your account</a>
+                <div class="terms-content">
+                    Launch date: January 1, 2026. Limited to 200 codes. 20% discount applies to main courses. Referral bonus: ₹500 after friend's first visit. Cannot combine offers. Management reserves right to modify terms.
                 </div>
             </div>
         </div>
@@ -4865,721 +4572,234 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
 </div>
 
 <script>
-    // Capture URL parameters and store in sessionStorage
+    // Auto show modal
     document.addEventListener('DOMContentLoaded', function() {
-        // Step 1: Capture URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const tenantIdFromUrl = urlParams.get("tenant_id");
-        const tableNoFromUrl = urlParams.get("table_no");
-
-        // Step 2: Store in session storage if present
-        if (tenantIdFromUrl) {
-            sessionStorage.setItem("tenant_id", tenantIdFromUrl);
-            console.log("✅ Tenant ID stored in sessionStorage:", tenantIdFromUrl);
-        }
-        if (tableNoFromUrl) {
-            sessionStorage.setItem("table_no", tableNoFromUrl);
-            console.log("✅ Table No stored in sessionStorage:", tableNoFromUrl);
-        }
-
-        // Step 3: Get stored values (use URL params first, then sessionStorage)
-        const tenantId = tenantIdFromUrl || sessionStorage.getItem("tenant_id") || "6925e829c42000f32ea01b1e";
-        const tableNo = tableNoFromUrl || sessionStorage.getItem("table_no") || "1";
-
-        console.log("🔍 Using Tenant ID:", tenantId);
-        console.log("🔍 Using Table No:", tableNo);
-
-        // Update page to show table information if available
-        updateTableInfoDisplay(tableNo);
-
-        // Rest of your existing code...
-        const authModal = document.getElementById('authModal');
-        const openModalBtn = document.getElementById('openAuthModal');
-        const closeModalBtn = document.getElementById('closeModal');
-
-        // Track authentication state
-        let isUserAuthenticated = false;
-
-        // Function to update table information display
-        function updateTableInfoDisplay(tableNumber) {
-            // Update page title or header to show table number
-            const tableInfoElement = document.getElementById('table-info');
-            if (tableInfoElement) {
-                tableInfoElement.textContent = `Table ${tableNumber}`;
-                tableInfoElement.style.display = 'block';
-            }
-
-            // Update any other elements that should show table info
-            const pageTitle = document.querySelector('title');
-            if (pageTitle && tableNumber !== "1") {
-                pageTitle.textContent = `Table ${tableNumber} - Epicurean Cafe`;
-            }
-
-            console.log("🪑 Table info updated for table:", tableNumber);
-        }
-
-        // Auto-login check function
-        async function checkAutoLogin() {
-            try {
-                console.log('🔐 Checking auto-login status...');
-                const response = await fetch("http://127.0.0.1:5000/api/auth/me", {
-                    method: "GET",
-                    credentials: "include",
-                    headers: {
-                        "X-Tenant-ID": tenantId
-                    }
-                });
-
-                console.log('🔐 Auto-login response status:', response.status);
-                
-                if (response.ok) {
-                    const user = await response.json();
-                    console.log("✅ User already logged in:", user);
-                    isUserAuthenticated = true;
-                    showLoggedInUI(user);
-                    return true;
-                } else {
-                    console.log("❌ User not logged in or session expired");
-                    isUserAuthenticated = false;
-                    return false;
-                }
-            } catch (err) {
-                console.error("🔐 Auto login check failed:", err);
-                isUserAuthenticated = false;
-                return false;
-            }
-        }
-
-
+        const modal = document.getElementById('luxuryModal');
+        modal.style.display = 'flex';
         
-        // Function to show logged-in UI
-        function showLoggedInUI(user) {
-            console.log("👤 User is logged in:", user);
-            if (openModalBtn) {
-                openModalBtn.textContent = `Welcome, ${user.name || "Member"}`;
-                openModalBtn.style.background = "var(--success)";
-                openModalBtn.disabled = true;
-            }
-            
-            // Ensure auth modal is closed if user is logged in
-            if (authModal) {
-                authModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Function to show logged-out UI
-        function showLoggedOutUI() {
-            console.log("👤 User is logged out");
-            if (openModalBtn) {
-                openModalBtn.textContent = 'Login / Sign Up';
-                openModalBtn.style.background = "";
-                openModalBtn.disabled = false;
-            }
-        }
-
-        // Function to open auth modal
-        function openAuthModal() {
-            if (authModal && !isUserAuthenticated) {
-                authModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                console.log("🔓 Showing auth modal - user not authenticated");
-            } else {
-                console.log("🚫 Auth modal not shown - user is authenticated or modal not found");
-            }
-        }
-
-        // Update the modal open function to check authentication first
-        async function handleAuthModalOpen() {
-            // Always check authentication status first
-            const isLoggedIn = await checkAutoLogin();
-            
-            if (isLoggedIn) {
-                console.log("✅ User is already authenticated - skipping modal");
-                return;
-            }
-            
-            // Only show modal if user is not logged in
-            openAuthModal();
-        }
-
-        // Check auto-login on page load and handle modal accordingly
-        async function initializeAuth() {
-            const isLoggedIn = await checkAutoLogin();
-            
-            if (isLoggedIn) {
-                console.log("✅ User authenticated on page load - hiding modal if open");
-                // Ensure modal is closed if user is already logged in
-                if (authModal) {
-                    authModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            } else {
-                console.log("❌ User not authenticated on page load - AUTO-OPENING MODAL");
-                showLoggedOutUI();
-                
-                // AUTO-OPEN THE MODAL WHEN USER IS NOT LOGGED IN
-                setTimeout(() => {
-                    openAuthModal();
-                }, 1000); // 1 second delay to let page load completely
-            }
-        }
-
-        // Initialize authentication on page load
-        initializeAuth();
-
-        // Updated open modal button click handler
-        if (openModalBtn) {
-            openModalBtn.addEventListener('click', handleAuthModalOpen);
-        }
-        
-        // Close modal functionality
-        if (closeModalBtn) {
-            closeModalBtn.addEventListener('click', function() {
-                if (authModal) {
-                    authModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        }
-        
-        if (authModal) {
-            authModal.addEventListener('click', function(e) {
-                if (e.target === authModal) {
-                    authModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        }
-
-        // Carousel functionality
-        const desktopSlides = document.querySelectorAll('.carousel-slide');
-        const desktopIndicators = document.querySelectorAll('.indicator');
-        let currentDesktopSlide = 0;
-        
-        function showDesktopSlide(index) {
-            desktopSlides.forEach(slide => slide.classList.remove('active'));
-            desktopIndicators.forEach(indicator => indicator.classList.remove('active'));
-            desktopSlides[index].classList.add('active');
-            desktopIndicators[index].classList.add('active');
-            currentDesktopSlide = index;
-        }
-        
-        if (desktopSlides.length > 0) {
-            setInterval(() => {
-                let nextSlide = (currentDesktopSlide + 1) % desktopSlides.length;
-                showDesktopSlide(nextSlide);
-            }, 5000);
-            
-            desktopIndicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => showDesktopSlide(index));
-            });
-        }
-
-        // Mobile Carousel
-        const mobileSlides = document.querySelectorAll('.mobile-offer-slide');
-        const mobileIndicators = document.querySelectorAll('.mobile-indicator');
-        let currentMobileSlide = 0;
-        
-        function showMobileSlide(index) {
-            mobileSlides.forEach(slide => slide.classList.remove('active'));
-            mobileIndicators.forEach(indicator => indicator.classList.remove('active'));
-            mobileSlides[index].classList.add('active');
-            mobileIndicators[index].classList.add('active');
-            currentMobileSlide = index;
-        }
-        
-        if (mobileSlides.length > 0) {
-            setInterval(() => {
-                let nextSlide = (currentMobileSlide + 1) % mobileSlides.length;
-                showMobileSlide(nextSlide);
-            }, 4000);
-            
-            mobileIndicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => showMobileSlide(index));
-            });
-        }
-
-        // Tab switching
-        const tabs = document.querySelectorAll('.auth-tab');
-        const forms = document.querySelectorAll('.auth-form');
-        
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                const tabName = this.getAttribute('data-tab');
-                tabs.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                forms.forEach(form => {
-                    form.classList.remove('active');
-                    if (form.id === `${tabName}-form`) form.classList.add('active');
-                });
-            });
-        });
-        
-        const switchToLogin = document.querySelector('.switch-to-login');
-        if (switchToLogin) {
-            switchToLogin.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector('.auth-tab[data-tab="login"]').click();
-            });
-        }
-
-        // OTP input navigation
-        const otpInputs = document.querySelectorAll('.otp-input');
-        otpInputs.forEach(input => {
-            input.addEventListener('input', function() {
-                const value = this.value;
-                const index = parseInt(this.getAttribute('data-index'));
-                if (value.length === 1 && index < 4) otpInputs[index].focus();
-            });
-            
-            input.addEventListener('keydown', function(e) {
-                const index = parseInt(this.getAttribute('data-index'));
-                if (e.key === 'Backspace' && this.value === '' && index > 1) {
-                    otpInputs[index - 2].focus();
-                }
-            });
-        });
-
-        // --- UPDATED LOGIN FLOW ---
-        const loginPhoneInput = document.getElementById('login-phone');
-        const sendOtpBtn = document.getElementById('send-otp-btn');
-        const loginOtpContainer = document.getElementById('login-otp-container');
-        const verifyOtpBtn = document.getElementById('verify-otp-btn');
-        const otpInputsLogin = document.querySelectorAll('#login-otp-container .otp-input');
-
-        if (sendOtpBtn) {
-            // Update button text to "Send OTP"
-            sendOtpBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send OTP';
-
-            sendOtpBtn.addEventListener('click', async function() {
-                const phone = loginPhoneInput.value.trim();
-                if (!phone || phone.length !== 10) {
-                    alert('Please enter a valid 10-digit phone number');
-                    return;
-                }
-
-                try {
-                    console.log('🔍 Checking if user exists...');
-                    // First check if user exists
-                    const checkResponse = await fetch('http://127.0.0.1:5000/api/auth/check-user', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-Tenant-ID': tenantId
-                        },
-                        body: JSON.stringify({ phone: phone })
-                    });
-
-                    const checkResult = await checkResponse.json();
-                    
-                    if (!checkResponse.ok) {
-                        if (checkResponse.status === 404) {
-                            // User not found - show message and suggest signup
-                            alert('User not found. Please sign up first.');
-                            // Switch to signup tab
-                            document.querySelector('.auth-tab[data-tab="signup"]').click();
-                            // Pre-fill phone number in signup form
-                            document.getElementById('signup-phone').value = phone;
-                            return;
-                        } else {
-                            alert(checkResult.error || 'Failed to check user');
-                            return;
-                        }
-                    }
-
-                    if (checkResult.exists) {
-                        console.log('✅ User exists, sending OTP...');
-                        
-                        // Send OTP for existing user
-                        const otpResponse = await fetch('http://127.0.0.1:5000/api/auth/send-otp', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-Tenant-ID': tenantId
-                            },
-                            body: JSON.stringify({ phone: phone })
-                        });
-
-                        const otpResult = await otpResponse.json();
-                        if (otpResponse.ok) {
-                            // Show OTP container
-                            loginOtpContainer.style.display = 'block';
-                            sendOtpBtn.style.display = 'none';
-                            otpInputsLogin[0].focus();
-                            
-                            // Update success message with user name
-                            const successMessage = document.getElementById('otp-sent-message');
-                            if (successMessage) {
-                                successMessage.innerHTML = `
-                                    <i class="fas fa-shield-check"></i>
-                                    <span>Secure code sent to ${checkResult.user_name || 'your device'}</span>
-                                `;
-                            }
-                            
-                            console.log('Login OTP sent:', otpResult.message);
-                        } else {
-                            alert(otpResult.error || 'Failed to send OTP');
-                        }
-                    }
-                } catch (err) {
-                    console.error(err);
-                    alert('Failed to process request. Try again.');
-                }
-            });
-        }
-
-        if (verifyOtpBtn) {
-            verifyOtpBtn.addEventListener('click', async function() {
-                const phone = loginPhoneInput.value.trim();
-                const otp = Array.from(otpInputsLogin).map(i => i.value).join('');
-
-                if (otp.length !== 4) {
-                    alert('Enter complete 4-digit OTP');
-                    return;
-                }
-
-                try {
-                    // First verify OTP
-                    const verifyResponse = await fetch('http://127.0.0.1:5000/api/auth/verify-otp', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-Tenant-ID': tenantId
-                        },
-                        body: JSON.stringify({ phone: phone, otp: otp })
-                    });
-
-                    const verifyResult = await verifyResponse.json();
-                    
-                    if (!verifyResponse.ok) {
-                        alert(verifyResult.error || 'OTP verification failed');
-                        return;
-                    }
-
-                    console.log('✅ OTP verified, proceeding to login...');
-                    
-                    // Now login the user
-                    const loginResponse = await fetch('http://127.0.0.1:5000/api/auth/login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-Tenant-ID': tenantId
-                        },
-                        body: JSON.stringify({ phone: phone }),
-                        credentials: 'include'
-                    });
-
-                    const loginResult = await loginResponse.json();
-                    if (loginResponse.ok) {
-                        alert('Login successful! Welcome back.');
-                        isUserAuthenticated = true;
-                        if (authModal) {
-                            authModal.classList.remove('active');
-                            document.body.style.overflow = 'auto';
-                        }
-                        
-                        // Update UI and verify login worked
-                        setTimeout(() => {
-                            checkAutoLogin();
-                        }, 500);
-                    } else {
-                        alert(loginResult.error || 'Login failed after OTP verification');
-                    }
-                } catch (err) {
-                    console.error(err);
-                    alert('Failed to verify OTP. Try again.');
-                }
-            });
-        }
-
-        // --- SIGNUP FLOW ---
-        const signupNameInput = document.getElementById('signup-name');
-        const signupPhoneInput = document.getElementById('signup-phone');
-        const signupDobInput = document.getElementById('signup-dob');
-        const signupSendOtpBtn = document.getElementById('signup-send-otp-btn');
-        const signupOtpContainer = document.getElementById('signup-otp-container');
-        const signupVerifyOtpBtn = document.getElementById('signup-verify-otp-btn');
-        const signupActivationContainer = document.getElementById('signup-activation-container');
-        const activateMembershipBtn = document.getElementById('activate-membership-btn');
-        const otpInputsSignup = document.querySelectorAll('#signup-otp-container .otp-input');
-
-        if (signupSendOtpBtn) {
-            signupSendOtpBtn.addEventListener('click', async function() {
-                const name = signupNameInput.value.trim();
-                const phone = signupPhoneInput.value.trim();
-                const dob = signupDobInput.value;
-
-                if (!name || !phone || phone.length !== 10 || !dob) {
-                    alert('Please fill all fields with valid information');
-                    return;
-                }
-
-                try {
-                    const response = await fetch('http://127.0.0.1:5000/api/auth/send-otp', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-Tenant-ID': tenantId
-                        },
-                        body: JSON.stringify({ phone: phone })
-                    });
-
-                    const result = await response.json();
-                    if (response.ok) {
-                        signupOtpContainer.style.display = 'block';
-                        signupSendOtpBtn.style.display = 'none';
-                        otpInputsSignup[0].focus();
-                        console.log('Signup OTP sent:', result.message);
-                    } else {
-                        alert(result.error || 'Failed to send OTP');
-                    }
-                } catch (err) {
-                    console.error(err);
-                    alert('Failed to send OTP. Try again.');
-                }
-            });
-        }
-
-        if (signupVerifyOtpBtn) {
-            signupVerifyOtpBtn.addEventListener('click', async function() {
-                const phone = signupPhoneInput.value.trim();
-                const otp = Array.from(otpInputsSignup).map(i => i.value).join('');
-
-                if (otp.length !== 4) {
-                    alert('Enter complete 4-digit OTP');
-                    return;
-                }
-
-                try {
-                    const verifyResponse = await fetch('http://127.0.0.1:5000/api/auth/verify-otp', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-Tenant-ID': tenantId
-                        },
-                        body: JSON.stringify({ phone: phone, otp: otp })
-                    });
-
-                    const verifyResult = await verifyResponse.json();
-                    
-                    if (verifyResponse.ok) {
-                        signupOtpContainer.style.display = 'none';
-                        signupActivationContainer.style.display = 'block';
-                        console.log('OTP verified successfully');
-                    } else {
-                        alert(verifyResult.error || 'OTP verification failed');
-                    }
-                } catch (err) {
-                    console.error(err);
-                    alert('Failed to verify OTP. Try again.');
-                }
-            });
-        }
-
-        if (activateMembershipBtn) {
-            activateMembershipBtn.addEventListener('click', async function() {
-                const name = signupNameInput.value.trim();
-                const phone = signupPhoneInput.value.trim();
-                const dob = signupDobInput.value;
-
-                console.log('🎯 Activate Membership clicked');
-                console.log('📝 User details:', { name, phone, dob });
-
-                try {
-                    const signupResponse = await fetch('http://127.0.0.1:5000/api/auth/signup', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-Tenant-ID': tenantId
-                        },
-                        body: JSON.stringify({ name, phone, dob }),
-                        credentials: 'include'
-                    });
-
-                    console.log('📨 Response status:', signupResponse.status);
-                    const signupResult = await signupResponse.json();
-                    console.log('📦 Response body:', signupResult);
-
-                    if (signupResponse.ok) {
-                        console.log('✅ Signup successful!');
-                        isUserAuthenticated = true;
-                        alert('Welcome to Epicurean Cafe! Your premium membership has been activated with 5% welcome discount.');
-                        if (authModal) {
-                            authModal.classList.remove('active');
-                            document.body.style.overflow = 'auto';
-                        }
-                        
-                        // Verify signup worked
-                        setTimeout(() => checkAutoLogin(), 500);
-                    } else {
-                        console.log('❌ Signup failed:', signupResult.error);
-                        alert(signupResult.error || 'Signup failed');
-                    }
-                } catch (err) {
-                    console.error('💥 Error during signup:', err);
-                    alert('Failed to activate membership. Try again.');
-                }
-            });
-        }
-
-        // --- RESEND OTP ---
-        const resendOtpBtn = document.getElementById('resend-otp');
-        if (resendOtpBtn) {
-            resendOtpBtn.addEventListener('click', async function(e) {
-                e.preventDefault();
-                const phone = loginPhoneInput.value.trim();
-                if (!phone) return alert('Enter phone number first');
-
-                try {
-                    const response = await fetch('http://127.0.0.1:5000/api/auth/send-otp', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-Tenant-ID': tenantId
-                        },
-                        body: JSON.stringify({ phone: phone })
-                    });
-
-                    const result = await response.json();
-                    alert(result.message || 'OTP resent successfully!');
-                } catch (err) {
-                    console.error(err);
-                    alert('Failed to resend OTP.');
-                }
-            });
-        }
-
-        const signupResendOtpBtn = document.getElementById('signup-resend-otp');
-        if (signupResendOtpBtn) {
-            signupResendOtpBtn.addEventListener('click', async function(e) {
-                e.preventDefault();
-                const phone = signupPhoneInput.value.trim();
-                if (!phone) return alert('Enter phone number first');
-
-                try {
-                    const response = await fetch('http://127.0.0.1:5000/api/auth/send-otp', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-Tenant-ID': tenantId
-                        },
-                        body: JSON.stringify({ phone: phone })
-                    });
-
-                    const result = await response.json();
-                    alert(result.message || 'OTP resent successfully!');
-                } catch (err) {
-                    console.error(err);
-                    alert('Failed to resend OTP.');
-                }
-            });
-        }
-
-        // Back buttons
-        const backToSignupDetails = document.getElementById('back-to-signup-details');
-        if (backToSignupDetails) {
-            backToSignupDetails.addEventListener('click', function(e) {
-                e.preventDefault();
-                signupOtpContainer.style.display = 'none';
-                signupActivationContainer.style.display = 'none';
-                signupSendOtpBtn.style.display = 'block';
-            });
-        }
-
-        const backToLoginPhone = document.getElementById('back-to-login-phone');
-        if (backToLoginPhone) {
-            backToLoginPhone.addEventListener('click', function(e) {
-                e.preventDefault();
-                loginOtpContainer.style.display = 'none';
-                sendOtpBtn.style.display = 'block';
-            });
-        }
-
-        // Guest login
-        const guestLoginBtn = document.getElementById('guest-login-btn');
-        if (guestLoginBtn) {
-            guestLoginBtn.addEventListener('click', function() {
-                if(confirm("You're choosing basic access without membership benefits. Premium members enjoy exclusive discounts, priority delivery, and special offers. Continue with basic access?")) {
-                    alert('Continuing with basic access. You can upgrade to premium anytime.');
-                    if (authModal) {
-                        authModal.classList.remove('active');
-                        document.body.style.overflow = 'auto';
-                    }
-                }
-            });
-        }
+        // Initialize everything
+        initializeCarousel();
+        initializeCountdown();
+        initializeCounter();
+        initializeNotifyForm();
+        simulateCodeClaims();
     });
 
-    // Function to get stored tenant ID and table number (use this in other pages)
-    function getStoredTableInfo() {
-        return {
-            tenantId: sessionStorage.getItem("tenant_id") || "6925e829c42000f32ea01b1e",
-            tableNo: sessionStorage.getItem("table_no") || "1"
-        };
-    }
+    // Close modal
+    document.getElementById('closeModal').addEventListener('click', function() {
+        const modal = document.getElementById('luxuryModal');
+        modal.style.display = 'none';
+    });
 
-    // Function to clear stored table info (if needed)
-    function clearStoredTableInfo() {
-        sessionStorage.removeItem("tenant_id");
-        sessionStorage.removeItem("table_no");
-        console.log("🧹 Cleared stored table info");
-    }
+    document.querySelector('.modal-backdrop').addEventListener('click', function() {
+        const modal = document.getElementById('luxuryModal');
+        modal.style.display = 'none';
+    });
 
-    // Function to check if user is authenticated
-    async function isUserLoggedIn() {
-        try {
-            const tableInfo = getStoredTableInfo();
-            const response = await fetch("http://127.0.0.1:5000/api/auth/me", {
-                method: "GET",
-                credentials: "include",
-                headers: {
-                    "X-Tenant-ID": tableInfo.tenantId
-                }
-            });
-            return response.ok;
-        } catch (err) {
-            console.error("Error checking auth status:", err);
-            return false;
+    // Carousel
+    function initializeCarousel() {
+        const track = document.getElementById('carouselTrack');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let current = 0;
+        let interval;
+
+        function showSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            
+            current = index;
+            track.style.transform = `translateX(-${current * 100}%)`;
+            
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
+            
+            resetInterval();
         }
+
+        function nextSlide() {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        }
+
+        function prevSlide() {
+            current = (current - 1 + slides.length) % slides.length;
+            showSlide(current);
+        }
+
+        function startInterval() {
+            interval = setInterval(nextSlide, 5000);
+        }
+
+        function resetInterval() {
+            clearInterval(interval);
+            startInterval();
+        }
+
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => showSlide(i));
+        });
+
+        track.addEventListener('mouseenter', () => clearInterval(interval));
+        track.addEventListener('mouseleave', startInterval);
+
+        startInterval();
+        showSlide(0);
     }
 
-    // Function to show the modal (call this from console)
-    async function showAuthModal() {
-        const isLoggedIn = await isUserLoggedIn();
-        if (isLoggedIn) {
-            console.log("🚫 Cannot show auth modal - user is already authenticated");
-            return;
+    // Countdown to Jan 1, 2026
+    function initializeCountdown() {
+        const target = new Date('January 1, 2026 00:00:00').getTime();
+
+        function update() {
+            const now = new Date().getTime();
+            const diff = target - now;
+
+            if (diff < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById('days').textContent = days.toString().padStart(3, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
         }
+
+        update();
+        setInterval(update, 60000);
+    }
+
+    // Counter
+    function initializeCounter() {
+        const total = 200;
+        let claimed = 48;
+        let remaining = total - claimed;
+
+        updateCounter(remaining, claimed);
+    }
+
+    function updateCounter(remaining, claimed) {
+        const element = document.getElementById('remainingCodes');
+        const progress = document.getElementById('codesProgress');
+
+        element.textContent = remaining;
         
-        const authModal = document.getElementById('authModal');
-        if (authModal) {
-            authModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            console.log('Authentication modal is now visible');
-        } else {
-            console.log('Authentication modal not found');
+        element.style.animation = 'none';
+        setTimeout(() => {
+            element.style.animation = 'pulse 0.5s ease';
+        }, 10);
+
+        const percent = ((200 - remaining) / 200) * 100;
+        progress.style.width = `${percent}%`;
+    }
+
+    // Form
+    function initializeNotifyForm() {
+        const form = document.getElementById('notifyForm');
+        const success = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = this.querySelector('input[type="email"]').value;
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            success.style.display = 'flex';
+            simulateFormSubmission();
+            this.reset();
+
+            setTimeout(() => {
+                success.style.display = 'none';
+            }, 4000);
+        });
+    }
+
+    function simulateFormSubmission() {
+        const element = document.getElementById('remainingCodes');
+        let remaining = parseInt(element.textContent);
+
+        if (remaining > 0) {
+            remaining--;
+            updateCounter(remaining, 200 - remaining);
         }
     }
 
-    // Function to hide the modal (call this from console)
-    function hideAuthModal() {
-        const authModal = document.getElementById('authModal');
-        if (authModal) {
-            authModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-            console.log('Authentication modal is now hidden');
-        } else {
-            console.log('Authentication modal not found');
-        }
+    function simulateCodeClaims() {
+        setInterval(() => {
+            if (Math.random() < 0.01) {
+                const element = document.getElementById('remainingCodes');
+                let remaining = parseInt(element.textContent);
+
+                if (remaining > 0) {
+                    remaining--;
+                    updateCounter(remaining, 200 - remaining);
+                    
+                    // Mini notification
+                    showMiniNotification();
+                }
+            }
+        }, 7000);
     }
 
-    // Export functions for global access
-    window.getStoredTableInfo = getStoredTableInfo;
-    window.clearStoredTableInfo = clearStoredTableInfo;
-    window.isUserLoggedIn = isUserLoggedIn;
-    window.showAuthModal = showAuthModal;
-    window.hideAuthModal = hideAuthModal;
+    function showMiniNotification() {
+        const notif = document.createElement('div');
+        notif.innerHTML = '<i class="fas fa-star"></i> <span>New early access registration!</span>';
+        
+        notif.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(198, 172, 131, 0.95);
+            color: #0e1618;
+            padding: 12px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100000;
+            animation: slideIn 0.3s ease, slideOut 0.3s ease 4.7s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        `;
+        
+        document.body.appendChild(notif);
+        
+        setTimeout(() => {
+            if (notif.parentNode) notif.remove();
+        }, 5000);
+    }
+
+    // Add animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from { transform: translateX(-30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(-30px); opacity: 0; }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    `;
+    document.head.appendChild(style);
 </script>
 
 
