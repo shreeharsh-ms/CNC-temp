@@ -32,6 +32,14 @@ def meet_chef():
 def coming_soon():
     return send_from_directory(FRONTEND_PATH, "Coming_soon.html")
 
+@main.route("/Privacy-Policy")
+def privacy_policy():
+    return send_from_directory(FRONTEND_PATH, "privacy-policy.html")
+
+@main.route("/terms-and-conditions")
+def terms_and_conditions():
+    return send_from_directory(FRONTEND_PATH, "Terms-and-conditions.html")
+
 # ---------- STATIC FILES (CSS, JS, Images) ----------
 @main.route("/<path:filename>")
 def static_files(filename):
@@ -41,3 +49,4 @@ def static_files(filename):
 @main.app_errorhandler(404)
 def page_not_found(e):
     return send_from_directory(FRONTEND_PATH, "404.html"), 404
+
