@@ -40,6 +40,12 @@ def privacy_policy():
 def terms_and_conditions():
     return send_from_directory(FRONTEND_PATH, "Terms-and-conditions.html")
 
+
+# Refund-Policy.html
+@main.route("/refund-policy")
+def refund_policy():
+    return send_from_directory(FRONTEND_PATH, "Refund-Policy.html")
+
 # ---------- STATIC FILES (CSS, JS, Images) ----------
 @main.route("/<path:filename>")
 def static_files(filename):
