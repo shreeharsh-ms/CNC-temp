@@ -568,189 +568,6 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 
 <!-- Add Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-
-<style>
-    /* Image Carousel Styling */
-    .pxl-image-carousel {
-        padding: 40px 0;
-        position: relative;
-    }
-    
-    .pxl-swiper-container {
-        overflow: hidden;
-        padding: 20px 0;
-    }
-    
-    .pxl-swiper-slide {
-        transition: transform 0.4s ease, opacity 0.4s ease;
-        opacity: 0.7;
-        transform: scale(0.9);
-    }
-    
-    .pxl-swiper-slide.swiper-slide-active,
-    .pxl-swiper-slide.swiper-slide-next,
-    .pxl-swiper-slide.swiper-slide-prev {
-        opacity: 1;
-        transform: scale(1);
-    }
-    
-    .item-inner {
-        position: relative;
-        overflow: hidden;
-        height: 400px;
-    }
-    
-    .item-inner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-		padding: 12px;
-    }
-    
-    .pxl-swiper-slide:hover .item-inner img {
-        transform: scale(1.05);
-    }
-    
-    /* Navigation Arrows */
-    .pxl-swiper-arrows.style-2 {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        transform: translateY(-50%);
-        z-index: 10;
-        pointer-events: none;
-    }
-    
-    .pxl-swiper-arrow {
-        position: absolute;
-        width: 60px;
-        height: 60px;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-        transition: all 0.3s ease;
-        pointer-events: all;
-    }
-    
-    .pxl-swiper-arrow:hover {
-        background: white;
-        transform: scale(1.1);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    }
-    
-    .pxl-swiper-arrow-prev {
-        left: 20px;
-    }
-    
-    .pxl-swiper-arrow-next {
-        right: 20px;
-    }
-    
-    .pxl-icon {
-        font-size: 24px;
-        color: #333;
-        font-weight: bold;
-    }
-    
-    /* Pagination Dots */
-    .pxl-swiper-dots {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        padding: 30px 0 10px;
-    }
-    
-    .pxl-swiper-pagination-bullet {
-        width: 14px;
-        height: 14px;
-        background: #ddd;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: block;
-    }
-    
-    .pxl-swiper-pagination-bullet.swiper-pagination-bullet-active {
-        background: #d4a574;
-        transform: scale(1.3);
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 1200px) {
-        .item-inner {
-            height: 350px;
-        }
-    }
-    
-    @media (max-width: 992px) {
-        .item-inner {
-            height: 300px;
-        }
-        
-        .pxl-swiper-arrow {
-            width: 50px;
-            height: 50px;
-        }
-        
-        .pxl-icon {
-            font-size: 20px;
-        }
-    }
-    
-    @media (max-width: 768px) {
-        .item-inner {
-            height: 250px;
-        }
-        
-        .pxl-swiper-arrow {
-            width: 45px;
-            height: 45px;
-        }
-        
-        .pxl-swiper-arrow-prev {
-            left: 10px;
-        }
-        
-        .pxl-swiper-arrow-next {
-            right: 10px;
-        }
-    }
-    
-    @media (max-width: 576px) {
-        .item-inner {
-            height: 200px;
-        }
-        
-        .pxl-swiper-arrow {
-            display: none;
-        }
-        
-        .pxl-swiper-dots {
-            padding: 20px 0 5px;
-        }
-        
-        .pxl-swiper-pagination-bullet {
-            width: 12px;
-            height: 12px;
-        }
-    }
-    
-    @media (max-width: 400px) {
-        .item-inner {
-            height: 180px;
-        }
-    }
-</style>
-
-<!-- Add Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
 <script>
     // Image Carousel Data
     const carouselImages = [
@@ -1022,14 +839,6 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
     // Initialize on load
     loadSwiperIfNeeded();
 </script>
-
-
-		        
-		        
-		        
-		        
-
-
 
 <script>
 // History Timeline Carousel Initialization
@@ -1304,6 +1113,189 @@ setTimeout(() => {
     }
 }, 1000);
 </script>
+<style>
+    /* Image Carousel Styling */
+    .pxl-image-carousel {
+        padding: 40px 0;
+        position: relative;
+    }
+    
+    .pxl-swiper-container {
+        overflow: hidden;
+        padding: 20px 0;
+    }
+    
+    .pxl-swiper-slide {
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        opacity: 0.7;
+        transform: scale(0.9);
+    }
+    
+    .pxl-swiper-slide.swiper-slide-active,
+    .pxl-swiper-slide.swiper-slide-next,
+    .pxl-swiper-slide.swiper-slide-prev {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+    .item-inner {
+        position: relative;
+        overflow: hidden;
+        height: 400px;
+    }
+    
+    .item-inner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+		padding: 12px;
+    }
+    
+    .pxl-swiper-slide:hover .item-inner img {
+        transform: scale(1.05);
+    }
+    
+    /* Navigation Arrows */
+    .pxl-swiper-arrows.style-2 {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        z-index: 10;
+        pointer-events: none;
+    }
+    
+    .pxl-swiper-arrow {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        pointer-events: all;
+    }
+    
+    .pxl-swiper-arrow:hover {
+        background: white;
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .pxl-swiper-arrow-prev {
+        left: 20px;
+    }
+    
+    .pxl-swiper-arrow-next {
+        right: 20px;
+    }
+    
+    .pxl-icon {
+        font-size: 24px;
+        color: #333;
+        font-weight: bold;
+    }
+    
+    /* Pagination Dots */
+    .pxl-swiper-dots {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        padding: 30px 0 10px;
+    }
+    
+    .pxl-swiper-pagination-bullet {
+        width: 14px;
+        height: 14px;
+        background: #ddd;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: block;
+    }
+    
+    .pxl-swiper-pagination-bullet.swiper-pagination-bullet-active {
+        background: #d4a574;
+        transform: scale(1.3);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        .item-inner {
+            height: 350px;
+        }
+    }
+    
+    @media (max-width: 992px) {
+        .item-inner {
+            height: 300px;
+        }
+        
+        .pxl-swiper-arrow {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .pxl-icon {
+            font-size: 20px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .item-inner {
+            height: 250px;
+        }
+        
+        .pxl-swiper-arrow {
+            width: 45px;
+            height: 45px;
+        }
+        
+        .pxl-swiper-arrow-prev {
+            left: 10px;
+        }
+        
+        .pxl-swiper-arrow-next {
+            right: 10px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .item-inner {
+            height: 200px;
+        }
+        
+        .pxl-swiper-arrow {
+            display: none;
+        }
+        
+        .pxl-swiper-dots {
+            padding: 20px 0 5px;
+        }
+        
+        .pxl-swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+        }
+    }
+    
+    @media (max-width: 400px) {
+        .item-inner {
+            height: 180px;
+        }
+    }
+</style>
+
+<!-- Add Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
 
 <!-- <style>
 /* History Timeline Carousel Styles */
@@ -1942,6 +1934,9 @@ setTimeout(() => {
             </div>
 </div>
 
+
+
+<!-- FROM heRE -->
 <style>
     /* Privacy Policy Specific Styles */
     :root {
@@ -3913,6 +3908,7 @@ setTimeout(() => {
 	// ]]>
 </script>
 
+<!-- TOO here -->
 
 
 </div><!-- #main -->
